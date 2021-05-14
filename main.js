@@ -22,3 +22,38 @@ function colorDiv (e) {
     e.target.style.backgroundColor = "rgb(" + redValue + "," + 
     greenValue + "," + blueValue + ")";
 }
+
+// Button that clears and reset the sizes
+const btn = document.querySelector("#btn");
+btn.addEventListener('click', changeSize);
+
+let selection = "";
+function changeSize () {
+    // Ask number from user, keep on asking until its a number
+    do{
+        selection = parseInt(prompt("Please enter a number from 1 to 30", ""), 10);
+    }while(isNaN(selection) || selection > 30 || selection < 1);
+    
+    // Remove all previous Divs
+    removeAllChildNodes(container);
+
+    // create divs using the inputed number
+    for (let i = 1; i <= selection * selection; i++) {
+        container.innerHTML += '<div class="box">  </div>';
+    }
+    
+    // Style 
+    container.style.gridTemplateColumns = "repeat(" + selection+ ", 2fr)";
+    container.style.gridTemplateRows = "repeat(" + selection+ ", 2fr)";
+
+    // Color the new boxes
+    const newBoxes = document.querySelectorAll('.box');
+    newBoxes.forEach(box => box.addEventListener('mouseover', colorDiv));
+
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
