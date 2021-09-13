@@ -31,8 +31,8 @@ let selection = '';
 function changeSize() {
   // Ask number from user, keep on asking until its a number
   do {
-    selection = parseInt(prompt('Please enter a number from 1 to 30', ''), 10);
-  } while (isNaN(selection) || selection > 30 || selection < 1);
+    selection = parseInt(prompt('Please enter a number from 1 to 100', ''), 10);
+  } while (isNaN(selection) || selection > 100 || selection < 1);
   // Remove all previous Divs
   removeAllChildNodes(container);
   // create divs using the inputed number
