@@ -2,7 +2,9 @@ const container = document.querySelector('#container');
 // Creates 16 x 16 divs inside the Div Container
 function createDivs() {
   for (let i = 1; i <= 256; i++) {
-    container.innerHTML += '<div class="box">  </div>';
+    const box = document.createElement('div');
+    box.classList.add('box');
+    container.appendChild(box);
   }
 }
 
@@ -35,7 +37,9 @@ function changeSize() {
   removeAllChildNodes(container);
   // create divs using the inputed number
   for (let i = 1; i <= selection ** 2; i++) {
-    container.innerHTML += '<div class="box">  </div>';
+    const box = document.createElement('div');
+    box.classList.add('box');
+    container.appendChild(box);
   }
   // Style
   container.style.gridTemplateColumns = 'repeat(' + selection + ', 2fr)';
